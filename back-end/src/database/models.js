@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('./db');
  
-const Category = database.define('category', {
+const Category = database.define('categories', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -14,7 +14,7 @@ const Category = database.define('category', {
     }
 });
 
-const Device = database.define('device', {
+const Device = database.define('devices', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -25,7 +25,7 @@ const Device = database.define('device', {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: 'Category',
+            model: 'categories',
             key: 'id'
         }
     },
