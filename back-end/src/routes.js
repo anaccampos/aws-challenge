@@ -1,12 +1,14 @@
 const Category = require('./controllers/Category');
 const Device = require('./controllers/Device');
+const { CategorySchema, DeviceSchema } = require('./schemas');
+const schemaValidation = require('./helpers')
 
 module.exports = (app) => {
 
     app
         .route('/device')
         .get(Device.index)
-        .post(Device.create)
+        .post(schemaValidation(DeviceSchema), Device.create)
 
     app
         .route('/device/:id')
@@ -15,7 +17,7 @@ module.exports = (app) => {
     app
         .route('/category')
         .get(Category.index)
-        .post(Category.create)
+        .post(schemaValidation(CategorySchema), Category.create)
     
     app
         .route('/category/:id')
