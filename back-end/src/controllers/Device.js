@@ -5,7 +5,7 @@ module.exports = {
     async index(req, res) {
         try {
             const device = await Device.findAll()
-            return res.json(device);
+            return res.status(200).json(device);
         } catch (err) {
             return res.status(500);
         }
@@ -28,13 +28,12 @@ module.exports = {
     },
 
     async delete(req, res) {
-
         const { id } = req.params;
         const device = await Device.findByPk(id);
 
         try {
             await device.destroy();
-            return res.status(200);
+            return res.sendStatus(200);
         } catch(err) {
             return res.status(404).json({message: "Device not found"});
         }

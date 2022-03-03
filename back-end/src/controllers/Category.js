@@ -28,7 +28,7 @@ module.exports = {
 
         try {
             await category.destroy();
-            return res.status(200);
+            return res.sendStatus(200);
         } catch(err) {
             return res.status(404).json({message: "Category not found."});
         }

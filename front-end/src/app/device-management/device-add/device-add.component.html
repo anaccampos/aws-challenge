@@ -1,1 +1,28 @@
-<p>device-add works!</p>
+<div class="container">
+    <h1 mat-dialog-title>New Device</h1>
+
+    <form [formGroup]="formDevice">
+        <mat-form-field appearance="fill" hintLabel="Category required">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="categoryId">
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                  {{category.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Color</mat-label>
+            <input formControlName="color" matInput maxlength="16" inputmode="tel" placeholder="Type color" #nameInput>
+            <mat-error>Color is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Part Number</mat-label>
+            <input formControlName="partNumber" matInput min="0" type="number" placeholder="Type part number">
+            <mat-error>Part number is required</mat-error>
+        </mat-form-field>
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button color="warning" type="cancel" (click)="closeDialog()" >Cancel</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!formDevice.valid" (click)="saveDevice()">Submit</button>
+        </div>
+    </form>
+</div>

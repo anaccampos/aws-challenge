@@ -1,0 +1,12 @@
+.table {
+    padding: 10px;
+    width: 100%;
+}
+
+.add-category {
+    padding: 10px;
+}
+
+.pointer {
+    cursor: pointer;
+}
